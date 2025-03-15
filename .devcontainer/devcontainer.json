@@ -5,8 +5,8 @@
         "vscode": {
             "extensions": [
                 "haskell.haskell",
-                "elm.tooling",
-                "ms-vscode.vscode-remote-extensionpack"
+                "elmtooling.elm-ls-vscode",
+                "ms-vscode-remote.vscode-remote-extensionpack"
             ],
             "settings": {
                 "elm.languageServerPath": "/usr/local/bin/elm-language-server",

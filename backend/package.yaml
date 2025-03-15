@@ -1,10 +1,16 @@
 name: backend
 version: 0.1.0.0
 dependencies:
+  - aeson
   - base >= 4.7 && < 5
-  - servant
-  - servant-server
-  - warp
   - persistent
   - persistent-postgresql
-  - aeson
+  - servant
+  - servant-server
+  - text
+  - warp
+
+executables:
+  backend:
+    main: Main.hs
+    source-dirs: src

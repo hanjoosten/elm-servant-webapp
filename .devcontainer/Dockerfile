@@ -1,5 +1,4 @@
-# Use Ubuntu 22.04 ("Jammy") as the base image
-FROM ubuntu:jammy AS base
+FROM ubuntu:22.04 AS base
 ## Inspiration from https://stackoverflow.com/questions/67680726/installing-haskells-cabal-or-ghcup-inside-a-dockerfile-wont-work
 
 # Set environment variable for timezone to avoid timezone-related errors
@@ -27,6 +26,8 @@ RUN apt-get update && apt-get install -y \
     git \
     gnupg2 \
     graphviz \
+    htop \
+    iproute2 \
     libbz2-dev \
     libexpat1-dev \
     libffi-dev \
@@ -36,10 +37,14 @@ RUN apt-get update && apt-get install -y \
     libncurses-dev \
     libncurses5 \
     libnuma-dev \
+    libpq-dev \
     libtinfo5 \
     lsb-release \
+    net-tools \
     openssh-server \
     pkg-config \
+    postgresql \
+    postgresql-contrib \
     postgresql-client \
     software-properties-common \
     sudo \
@@ -67,7 +72,10 @@ RUN ulimit -n 8192
 # install ghcup
 # Inspiration: http://haskell.org/ghcup/install
 # Install ghcup as the 'vscode' user
+
+
 RUN curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+
 
 # Add ghcup and cabal to the PATH
 ENV PATH="${WDIR}/.cabal/bin:${WDIR}/.ghcup/bin:${PATH}:${WDIR}/.local/bin:${PATH}"
@@ -92,7 +100,9 @@ FROM base AS tools
 # Versions are pinned, since we don't want to accidentally break anything (by always installing latest).
 RUN cabal install -v haskell-dap-0.0.16.0 && \
     cabal install -v stylish-haskell-0.14.5.0 && \
-    cabal install -v ormolu-0.7.2.0
+    cabal install -v ormolu-0.7.2.0 && \
+    cabal install -v servant-server-0.20.2 && \
+    cabal install -v servant-0.20.2
 # RUN cabal install -v ghci-dap-0.0.19.0
 # RUN cabal install -v haskell-debug-adapter-0.0.37.0
 # RUN cabal install -v hlint-3.2.7

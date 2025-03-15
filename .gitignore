@@ -1,0 +1,21 @@
+# Cabal files
+*.cabal-dev/
+*.ghc/
+dist/
+
+# Stack files
+.stack-work/
+.stack-work/
+
+# GHCi history
+.haskeline-history
+
+# Cabal configuration file (local user-specific settings)
+cabal.config
+
+# Generated executable files (if any)
+*.hi
+*.o
+*.dyn_o
+*.dyn_hi
+*.exe

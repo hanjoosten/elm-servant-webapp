@@ -1,49 +1,51 @@
-# Cabal files
+# Haskell-related files
 *.cabal-dev/
 *.ghc/
 dist/
-
-# Stack files
 .stack-work/
-.stack-work/
-
-# GHCi history
-.haskeline-history
-
-# Cabal configuration file (local user-specific settings)
 cabal.config
-
-# Generated executable files (if any)
 *.hi
 *.o
 *.dyn_o
 *.dyn_hi
 *.exe
 
-# Elm build output
+# Elm-related files
 elm-stuff/
-
-# Elm's package cache
 .node_modules/
-
-# Elm-specific build files
 elm.json
 elm-package.json
 
-# VS Code
+# Docker-related files
+*.dockerignore
+*.tar
+.docker-compose.override.yml
+docker-compose.yml
+Dockerfile
+
+# IDE/editor-specific files
 .vscode/
-
-# IntelliJ IDEA
 .idea/
-
-# Emacs
 *~
 \#*\#
-
-# Sublime Text
 *.sublime-workspace
 *.sublime-project
-
-# Vim
 *.swp
 *.swo
+
+# Node.js and npm-related files
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# General temporary files
+*.log
+*.tmp
+*.bak
+*~

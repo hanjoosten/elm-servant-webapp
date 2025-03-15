@@ -19,3 +19,31 @@ cabal.config
 *.dyn_o
 *.dyn_hi
 *.exe
+
+# Elm build output
+elm-stuff/
+
+# Elm's package cache
+.node_modules/
+
+# Elm-specific build files
+elm.json
+elm-package.json
+
+# VS Code
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+
+# Emacs
+*~
+\#*\#
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo

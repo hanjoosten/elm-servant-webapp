@@ -16,5 +16,13 @@
                 "postCreateCommand": "stack setup && elm install"
             }
         }
+    },
+    "portsAttributes": {
+        "8000": {
+            "label": "Elm frontend"
+        },
+        "8080": {
+            "label": "Haskell backend"
+        }
     }
 }

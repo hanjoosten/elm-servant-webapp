@@ -1,11 +1,44 @@
-version: '3'
+version: '3.8'
+
 services:
+  backend:
+    build:
+      context: ./backend   # Path to your backend directory
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"    # Expose backend API on port 8080
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/database
+    depends_on:
+      - db    # Ensure that the database is started first
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend  # Path to your frontend directory
+      dockerfile: Dockerfile  # Can be a separate Dockerfile inside the frontend directory
+    ports:
+      - "8000:80"    # Serve frontend on port 8000
+    depends_on:
+      - backend  # Ensure the backend is ready before frontend starts
+    networks:
+      - app-network
+    working_dir: /frontend  # Ensure you're in the correct directory for Elm
+    command: bash -c "elm make src/Main.elm --output=main.js && python3 -m http.server 80" # Compile Elm and serve with Python
+
   db:
-    image: postgres:latest
+    image: postgres:latest  # Use the latest official PostgreSQL image
     restart: always
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydb
+      POSTGRES_DB: database
     ports:
-      - "5432:5432"
+      - "5432:5432"    # Expose the database on port 5432
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -13,15 +13,15 @@ cabal.config
 # Elm-related files
 elm-stuff/
 .node_modules/
-elm.json
-elm-package.json
+# elm.json
+# elm-package.json
 
 # Docker-related files
-*.dockerignore
-*.tar
-.docker-compose.override.yml
-docker-compose.yml
-Dockerfile
+# *.dockerignore
+# *.tar
+# .docker-compose.override.yml
+# docker-compose.yml
+# Dockerfile
 
 # IDE/editor-specific files
 .vscode/

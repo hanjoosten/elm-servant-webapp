@@ -119,9 +119,10 @@ RUN sudo curl -L -o elm.gz https://github.com/elm/compiler/releases/download/0.1
     && sudo mv elm /usr/local/bin
 
 # Install Node.js and npm (requires sudo for system-wide installation)
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - \
-    && sudo apt-get install -y nodejs \
-    elm-language-server
+# RUN sudo curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - \
+#     && sudo apt-get install -y \
+#       nodejs \
+#       elm-language-server
 
 
 # # Install elm-format

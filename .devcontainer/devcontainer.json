@@ -1,0 +1,20 @@
+{
+    "name": "Haskell + Elm Devcontainer",
+    "dockerFile": "Dockerfile",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "haskell.haskell",
+                "elm.tooling",
+                "ms-vscode.vscode-remote-extensionpack"
+            ],
+            "settings": {
+                "elm.languageServerPath": "/usr/local/bin/elm-language-server",
+                "haskell.lhsInterpreters": [
+                    "ghci"
+                ],
+                "postCreateCommand": "stack setup && elm install"
+            }
+        }
+    }
+}

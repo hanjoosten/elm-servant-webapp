@@ -129,19 +129,18 @@ RUN sudo curl -L -o elm.gz https://github.com/elm/compiler/releases/download/0.1
     && sudo mv elm /usr/local/bin
 
 # Install Node.js and npm (requires sudo for system-wide installation)
-# RUN sudo curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - \
-#     && sudo apt-get install -y \
-#       nodejs \
-#       elm-language-server
+RUN sudo curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - \
+    && sudo apt-get install -y \
+      nodejs
 
+# Install tooling for Elm
+RUN sudo npm install -g \
+     elm-language-server \
+     elm-test \
+     elm-format \
+     elm-review
 
-# # Install elm-format
-# RUN curl -L -o elm-format.gz \
-#     && gunzip elm-format.gz \
-#     && chmod +x elm-format \
-#     && mv elm-format /usr/local/bin
-
-# # # Add just the .cabal file to capture dependencies
+# Add just the .cabal file to capture dependencies
 # COPY ./package.yaml ${WDIR}/package.yaml
 # COPY ./stack.yaml ${WDIR}/stack.yaml
 

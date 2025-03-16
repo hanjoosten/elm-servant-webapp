@@ -1,8 +1,8 @@
-# Frontend Dockerfile
+# elm-spa-example Dockerfile
 
 FROM node:18
 
-WORKDIR /frontend
+WORKDIR /elm-spa-example
 
 # Install Elm
 RUN npm install -g elm
@@ -14,4 +14,4 @@ COPY . .
 EXPOSE 80
 
 # The command compiles Elm and serves it using Python's HTTP server
-CMD bash -c "elm make src/Main.elm --output=main.js && python3 -m http.server 80"
+CMD bash -c "elm make src/Main.elm --output=elm.js && python3 -m http.server 80"
